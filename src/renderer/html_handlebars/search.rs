@@ -3,6 +3,7 @@ use std::collections::{HashMap, HashSet};
 use std::path::Path;
 
 use elasticlunr::Index;
+use elasticlunr::Language;
 use pulldown_cmark::*;
 
 use crate::book::{Book, BookItem};
@@ -13,7 +14,8 @@ use crate::utils;
 
 /// Creates all files required for search.
 pub fn create_files(search_config: &Search, destination: &Path, book: &Book) -> Result<()> {
-    let mut index = Index::new(&["title", "body", "breadcrumbs"]);
+    //let mut index = Index::new(&["title", "body", "breadcrumbs"]);  
+    let mut index = Index::with_language(get_lang_from_str("zh"), &["title", "body", "breadcrumbs"]);
     let mut doc_urls = Vec::with_capacity(book.sections.len());
 
     for item in book.iter() {
@@ -36,6 +38,7 @@ pub fn create_files(search_config: &Search, destination: &Path, book: &Book) -> 
         utils::fs::write_file(destination, "searcher.js", searcher::JS)?;
         utils::fs::write_file(destination, "mark.min.js", searcher::MARK_JS)?;
         utils::fs::write_file(destination, "elasticlunr.min.js", searcher::ELASTICLUNR_JS)?;
+        utils::fs::write_file(destination, "lunr.zh.js", searcher::LUNR_ZH_JS)?;
         debug!("Copying search files ✓");
     }
 
@@ -256,4 +259,11 @@ fn clean_html(html: &str) -> String {
         };
     }
     AMMONIA.clean(html).to_string()
+}
+
+fn get_lang_from_str(lang: &str) -> elasticlunr::Language {
+    match Language::from_code(lang) {
+        None => return Language::English , 
+        Some(ref x) => return *x,
+    };
 }
