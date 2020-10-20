@@ -259,6 +259,11 @@ impl HtmlHandlebars {
             )?;
         }
 
+        //mermaid
+        write_file(destination, "mermaid.min.js", &theme.mermaid_min_js)?;
+        write_file(destination, "mermaid.css", &theme.mermaid_css)?;
+        write_file(destination, "mermaid-init.js", &theme.mermaid_init_js)?;
+
         let playground_config = &html_config.playground;
 
         // Ace is a very large dependency, so only load it when requested

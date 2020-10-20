@@ -23,7 +23,7 @@ use toml::Value;
 
 use crate::errors::*;
 use crate::preprocess::{
-    CmdPreprocessor, IndexPreprocessor, LinkPreprocessor, Preprocessor, PreprocessorContext,
+    CmdPreprocessor, IndexPreprocessor, LinkPreprocessor, Preprocessor, PreprocessorContext, Mermaid,
 };
 use crate::renderer::{CmdRenderer, HtmlHandlebars, MarkdownRenderer, RenderContext, Renderer};
 use crate::utils;
@@ -375,6 +375,7 @@ fn default_preprocessors() -> Vec<Box<dyn Preprocessor>> {
     vec![
         Box::new(LinkPreprocessor::new()),
         Box::new(IndexPreprocessor::new()),
+        Box::new(Mermaid::new()),
     ]
 }
 
@@ -396,6 +397,7 @@ fn determine_preprocessors(config: &Config) -> Result<Vec<Box<dyn Preprocessor>>
             match key.as_ref() {
                 "links" => preprocessors.push(Box::new(LinkPreprocessor::new())),
                 "index" => preprocessors.push(Box::new(IndexPreprocessor::new())),
+                "mermaid" => preprocessors.push(Box::new(Mermaid::new())),
                 name => preprocessors.push(interpret_custom_preprocessor(
                     name,
                     &preprocessor_table[name],

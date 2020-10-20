@@ -158,6 +158,16 @@ impl BookBuilder {
         let mut highlight_js = File::create(themedir.join("highlight.js"))?;
         highlight_js.write_all(theme::HIGHLIGHT_JS)?;
 
+        //mermaid css & js
+        let mut mermaid_min_js = File::create(themedir.join("mermaid.min.js"))?;
+        mermaid_min_js.write_all(theme::MERMAID_MIN_JS)?;
+
+        let mut mermaid_css = File::create(themedir.join("mermaid.css"))?;
+        mermaid_css.write_all(theme::MERMAID_CSS)?;
+
+        let mut mermaid_init_js = File::create(themedir.join("mermaid-init.js"))?;
+        mermaid_init_js.write_all(theme::MERMAID_INIT_JS)?;
+
         Ok(())
     }
 

@@ -37,6 +37,10 @@ pub static FONT_AWESOME_WOFF: &[u8] = include_bytes!("FontAwesome/fonts/fontawes
 pub static FONT_AWESOME_WOFF2: &[u8] =
     include_bytes!("FontAwesome/fonts/fontawesome-webfont.woff2");
 pub static FONT_AWESOME_OTF: &[u8] = include_bytes!("FontAwesome/fonts/FontAwesome.otf");
+//mermaid
+pub static MERMAID_MIN_JS: &[u8] = include_bytes!("mermaid.min.js");
+pub static MERMAID_CSS: &[u8] = include_bytes!("mermaid.css");
+pub static MERMAID_INIT_JS: &[u8] = include_bytes!("mermaid-init.js");
 
 /// The `Theme` struct should be used instead of the static variables because
 /// the `new()` method will look if the user has a theme directory in their
@@ -62,6 +66,9 @@ pub struct Theme {
     pub ayu_highlight_css: Vec<u8>,
     pub highlight_js: Vec<u8>,
     pub clipboard_js: Vec<u8>,
+    pub mermaid_min_js: Vec<u8>,
+    pub mermaid_css: Vec<u8>,
+    pub mermaid_init_js: Vec<u8>,
 }
 
 impl Theme {
@@ -102,6 +109,9 @@ impl Theme {
                     theme_dir.join("ayu-highlight.css"),
                     &mut theme.ayu_highlight_css,
                 ),
+                (theme_dir.join("mermaid_min_js"), &mut theme.mermaid_min_js),
+                (theme_dir.join("mermaid.css"), &mut theme.mermaid_css),
+                (theme_dir.join("mermaid-init.js"), &mut theme.mermaid_init_js),
             ];
 
             let load_with_warn = |filename: &Path, dest| {
@@ -161,6 +171,9 @@ impl Default for Theme {
             ayu_highlight_css: AYU_HIGHLIGHT_CSS.to_owned(),
             highlight_js: HIGHLIGHT_JS.to_owned(),
             clipboard_js: CLIPBOARD_JS.to_owned(),
+            mermaid_min_js: MERMAID_MIN_JS.to_owned(),
+            mermaid_css: MERMAID_CSS.to_owned(),
+            mermaid_init_js: MERMAID_INIT_JS.to_owned(),
         }
     }
 }
@@ -248,6 +261,9 @@ mod tests {
             ayu_highlight_css: Vec::new(),
             highlight_js: Vec::new(),
             clipboard_js: Vec::new(),
+            mermaid_min_js: Vec::new(),
+            mermaid_css: Vec::new(),
+            mermaid_init_js: Vec::new(),
         };
 
         assert_eq!(got, empty);
