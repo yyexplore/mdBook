@@ -45,7 +45,7 @@ tokio = { version = "0.2.18", features = ["macros"], optional = true }
 warp = { version = "0.2.2", default-features = false, features = ["websocket"], optional = true }
 
 # Search feature
-elasticlunr-rs = { version = "2.3.9", optional = true, default-features = false, features = ["zh"], git = "https://github.com/yyexplore/elasticlunr-rs.git"}
+elasticlunr-rs = { version = "2.3.9", optional = true, default-features = false, features = ["zh"], path = "../elasticlunr-rs"}
 ammonia = { version = "3", optional = true }
 
 [dev-dependencies]
