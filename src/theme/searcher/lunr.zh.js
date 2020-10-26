@@ -63,7 +63,7 @@
         };
         //var segmenter = new TinySegmenter(); //
 
-        lunr.zh.tokenizer = function(obj) {
+        lunr.zh.tokenizer = function(str) {
             if (!arguments.length || str === null || str === undefined) return [];
             if (Array.isArray(str)) {
                 var arr = str.filter(function(token) {
@@ -81,7 +81,10 @@
                 var out = [];
                 arr.forEach(function(item) {
                     //var tokens = item.split(elasticlunr.tokenizer.seperator);
-                    var tokens = item.split(/\W+/).concat(item.replace(/[\x00-\x7F]/g, '').split(''));
+                    var l_str = item.toString().trim().toLowerCase();
+                    var en_tokens = l_str.split(/\W+/).filter(item => item !== '');
+                    var zh_tokens = l_str.replace(/[\x00-\x7F]/g, '').split('');
+                    var tokens = en_tokens.concat(zh_tokens);
                     out = out.concat(tokens);
                 }, this);
 
@@ -89,9 +92,11 @@
             }
 
             var l_str = str.toString().trim().toLowerCase();
-            var output = l_str.split(/\W+/).concat(l_str.replace(/[\x00-\x7F]/g, '').split(''));
-            console.log("tokenizer result: " + output);
-            return output;
+            var en_tokens = l_str.split(/\W+/).filter(item => item !== '');
+            var zh_tokens = l_str.replace(/[\x00-\x7F]/g, '').split('');
+            var tokens = en_tokens.concat(zh_tokens);
+            console.log("tokenizer result: " + tokens);
+            return tokens;
 
             //return l_str.split(/\W+/).concat(l_str.replace(/[\x00-\x7F]/g, '').split(''));
             //return str.toString().trim().toLowerCase().split(elasticlunr.tokenizer.seperator);

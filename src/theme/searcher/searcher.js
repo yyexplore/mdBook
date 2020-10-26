@@ -253,6 +253,7 @@ window.search = window.search || {};
         searchbar_outer = config.searchbar_outer;
         doc_urls = config.doc_urls;
         searchindex = elasticlunr.Index.load(config.index);
+        searchindex.use(elasticlunr.zh);
 
         // Set up events
         searchicon.addEventListener('click', function(e) { searchIconClickHandler(); }, false);
