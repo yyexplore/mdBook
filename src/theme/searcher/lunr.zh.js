@@ -95,7 +95,7 @@
             var en_tokens = l_str.split(/\W+/).filter(item => item !== '');
             var zh_tokens = l_str.replace(/[\x00-\x7F]/g, '').split('');
             var tokens = en_tokens.concat(zh_tokens);
-            console.log("tokenizer result: " + tokens);
+            //console.log("tokenizer result: " + tokens);
             return tokens;
 
             //return l_str.split(/\W+/).concat(l_str.replace(/[\x00-\x7F]/g, '').split(''));
@@ -108,7 +108,7 @@
                 throw new Error('token should not be undefined');
             }
 
-            console.log("trimmer:  " + token);
+            //console.log("trimmer:  " + token);
 
             return token
                 //.replace(/^\W+/, '')
