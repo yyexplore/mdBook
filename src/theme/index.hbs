@@ -256,6 +256,17 @@
         </script>
         {{/if}}
 
+        <!-- Baidu Analytics Tag -->
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?289183eba3a0dc259eb4f916d634fa7d";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        
         {{#if playground_line_numbers}}
         <script type="text/javascript">
             window.playground_line_numbers = true;
