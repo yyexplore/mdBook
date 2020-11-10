@@ -498,6 +498,16 @@ function playground_text(playground) {
         window.removeEventListener('mousemove', resize, false);
         window.removeEventListener('mouseup', stopResize, false);
     }
+    window.onresize = function (e) {
+        var innerWidth = e.target.innerWidth
+        if (innerWidth >= 1080) {
+            html.classList.add('sidebar-visible')
+            html.classList.remove('sidebar-hidden')
+        } else {
+            html.classList.remove('sidebar-visible')
+            html.classList.add('sidebar-hidden')
+        }
+    }
 
     document.addEventListener('touchstart', function (e) {
         firstContact = {

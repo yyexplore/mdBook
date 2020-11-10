@@ -136,7 +136,7 @@ a > .hljs {
     bottom: 0;
     margin: 0;
     max-width: 150px;
-    min-width: 90px;
+    min-width: 40px;
 
     display: flex;
     justify-content: center;
@@ -172,10 +172,11 @@ a > .hljs {
 
 .next {
     float: right;
-    right: var(--page-padding);
+    /* right: var(--page-padding); */
+    right: 0;
 }
 
-@media only screen and (max-width: 1080px) {
+/* @media only screen and (max-width: 1080px) {
     .nav-wide-wrapper { display: none; }
     .nav-wrapper { display: block; }
 }
@@ -183,7 +184,7 @@ a > .hljs {
 @media only screen and (max-width: 1380px) {
     .sidebar-visible .nav-wide-wrapper { display: none; }
     .sidebar-visible .nav-wrapper { display: block; }
-}
+} */
 
 /* Inline code */
 
