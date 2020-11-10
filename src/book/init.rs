@@ -168,6 +168,13 @@ impl BookBuilder {
         let mut mermaid_init_js = File::create(themedir.join("mermaid-init.js"))?;
         mermaid_init_js.write_all(theme::MERMAID_INIT_JS)?;
 
+        //toc
+        let mut toc_js = File::create(themedir.join("toc.js"))?;
+        toc_js.write_all(theme::TOC_JS)?;
+
+        let mut toc_css = File::create(themedir.join("toc.css"))?;
+        toc_css.write_all(theme::TOC_CSS)?;
+
         Ok(())
     }
 

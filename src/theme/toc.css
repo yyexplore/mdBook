@@ -1,0 +1,41 @@
+@media only screen and (max-width:1439px) {
+    .sidetoc {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:1440px) {
+    main {
+        position: relative;
+    }
+    .sidetoc {
+        margin-left: auto;
+        margin-right: auto;
+        left: calc(100% + (var(--content-max-width))/4 - 140px);
+        position: absolute;
+    }
+    .pagetoc {
+        position: fixed;
+        width: 200px;
+        border: 1px solid var(--sidebar-bg);
+    }
+    .pagetoc a {
+        color: var(--fg);
+        display: block;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        padding-left: 5px;
+        text-align: left;
+        text-decoration: none;
+        font-size:80%
+    }
+    .pagetoc a:hover,
+    .pagetoc a.active {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-fg);
+    }
+    .pagetoc .active {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-fg);
+    }
+}

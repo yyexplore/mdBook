@@ -47,6 +47,9 @@
         <!-- Mermaid.js  Stylesheets -->
         <link rel="stylesheet" href="{{ path_to_root }}mermaid.css">
 
+        <!-- TOC  Stylesheets -->
+        <link rel="stylesheet" href="{{ path_to_root }}toc.css">
+
         <!-- Custom theme stylesheets -->
         {{#each additional_css}}
         <link rel="stylesheet" href="{{ ../path_to_root }}{{ this }}">
@@ -178,6 +181,7 @@
 
                 <div id="content" class="content">
                     <main>
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
                         {{{ content }}}
                     </main>
 
@@ -286,6 +290,9 @@
         <!-- mermaid js-->
         <script src="{{ path_to_root }}mermaid.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}mermaid-init.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- TOC js-->
+        <script src="{{ path_to_root }}toc.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         {{#each additional_js}}
